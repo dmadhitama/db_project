@@ -1,9 +1,10 @@
-from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi import FastAPI, HTTPException, Depends, status, Response
 from pydantic import BaseModel
 from typing import Annotated
 from config import models
 from config.database import engine, SessionLocal
 from sqlalchemy.orm import Session
+import uvicorn
 
 
 app = FastAPI()
@@ -89,3 +90,11 @@ async def delete_post(user_id: int, db: db_dependency):
         )
     db.delete(post)
     db.commit()
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app", 
+        host="127.0.0.1", 
+        port=8000,
+        reload=True,
+    )

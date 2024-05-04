@@ -9,6 +9,12 @@ cd pgvector/
 docker compose up -d
 ```
 
+## Run the API server
+Run this:
+```bash
+python main.py
+```
+
 ## Store a username to the database
 To store a username to the database using `curl` to endpoint `/users/`:
 ```bash
