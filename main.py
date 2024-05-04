@@ -73,3 +73,19 @@ async def get_post(post_id: int, db: db_dependency):
             detail="Post ID is not found in the database!"
         )
     return post
+
+# endpoint to delete a post
+@app.delete("/posts/{user_id}", status_code=status.HTTP_200_OK)
+async def delete_post(user_id: int, db: db_dependency):
+    post = db.query(
+        models.Post
+    ).filter(
+        models.Post.id == user_id
+    ).first()
+    if post is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, 
+            detail="Post ID is not found in the database!"
+        )
+    db.delete(post)
+    db.commit()

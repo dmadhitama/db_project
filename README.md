@@ -1,5 +1,7 @@
 # Test an API build and call
 
+Implement API builds FastAPI, bundled with SQLAlchemy.
+
 ## Run the database using PGVector docker
 Run this:
 ```bash
@@ -39,5 +41,11 @@ Result:
 {"title":"ABCD","content":"Ini adalah abjad","user_id":2,"id":1}
 ```
 
+## Delete a post from the database
+Run this:
+```bash
+curl -X DELETE http://127.0.0.1:8000/posts/1
+```
+
 ### Detailed description
-It is possible to check the detailed of API request parameters using endpoints `/docs` using Swagger documentation and run the API request using it.
+It is possible to check the detailed of API request parameters using endpoints `/docs` for documentation and run the API request using it.
